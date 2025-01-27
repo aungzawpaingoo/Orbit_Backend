@@ -2,30 +2,32 @@ const mongoose = require('mongoose');
 
 const activeSprintSchema = new mongoose.Schema({
 
-    name: { type: String, required: true },
+    sprintName: { type: String, required: true },
+
+    project: { type: mongoose.Schema.Types.ObjectId, ref: 'Project', required: true },
 
     description: { type: String, required: true },
+
+    startDate: { type: Date, required: true },
+
+    endDate: { type: Date, required: true },
+
+    sprintGoal: { type: String, required: true },
+
+    progress: { type: Number, default: 0, min: 0, max: 100 },
+
+    retrospectiveNotes: { type: String },
+
+    attachments: [{
+        filename: { type: String },
+        fileUrl: { type: String },
+    }],
 
     priority: {
         type: String,
         enum: ['Low', 'Medium', 'High'],
         default: 'Low',
     },
-
-    project: { type: mongoose.Schema.Types.ObjectId, ref: 'Project', required: true },
-
-    status: {
-        type: String,
-        enum: ['To Do', 'In Progress', 'Done'],
-        default: 'To Do',
-    },
-
-    assignee: {
-        name: { type: String, required: true },
-        avatar: { type: String, required: true }
-    },
-
-    dueDate: { type: Date, required: true },
 
 
 });
