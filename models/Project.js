@@ -10,6 +10,8 @@ const projectSchema = new mongoose.Schema(
       avatar: { type: String },
     },
     image: { type: String },
+    startDate: { type: Date, required: true }, 
+    endDate: { type: Date, required: true },
   },
   { timestamps: true }
 );
