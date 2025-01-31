@@ -75,6 +75,7 @@ router.post('/', upload.single('image'), async (req,res) => {
       image: req.file ? `uploads/${req.file.filename.replace(/\\/g, '/')}` : null,
       startDate:req.body.startDate,
       endDate:req.body.endDate,
+      createdBy:req.body.createdBy,
     };
 
     const project = new Project(projectData);
